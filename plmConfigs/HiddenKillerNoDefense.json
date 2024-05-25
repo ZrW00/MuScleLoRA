@@ -1,0 +1,46 @@
+{
+    "target_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "poison_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "victim":{
+        "type": "plm",
+        "model": "bert",
+        "path": "bert-large-uncased",
+        "num_classes": 2,
+        "device": "gpu",
+        "max_len": 512
+    },
+    "attacker":{
+        "name": "base",
+        "metrics": ["accuracy", "loss"],
+        "train":{
+            "name": "base",
+            "lr": 2e-5,
+            "weight_decay": 0,
+            "epochs": 10,
+            "batch_size": 32,
+            "warm_up_epochs": 0,
+            "ckpt": "best",
+            "save_path": "./models",
+            "attackMethod":"hiddenkiller"
+        },
+        "poisoner":{
+            "name": "synbkd",
+            "poison_rate": 0.1,
+            "target_label": 1,
+            "label_consistency": false,
+            "label_dirty": false,
+            "load": true,
+            "save":false,
+            "template_id": -1
+        }
+    },
+    "clean-tune": false
+
+
+}

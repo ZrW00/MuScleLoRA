@@ -1,0 +1,70 @@
+{
+    "target_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "poison_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "victim":{
+        "type": "llm",
+        "model": "llama",
+        "path": "llama-2-7b-hf",
+        "num_classes": 2,
+        "device": "gpu",
+        "max_len": 4096,
+        "muscleConfig":{
+            "muscle":true,
+            "lora":true,
+            "loraConfig": {
+                "lora_alpha": 1024,
+                "lora_dropout": 0.0,
+                "r": 1024
+            },
+            "mslr":false,
+            "mslrConfig":{
+                "shortcut":false,
+                "total0Init":false,
+                "freqBand": [1, 2, 3, 4],
+                "inner_rank": 1,
+                "mslrAlpha": 4,
+                "mslrDropout": 0.0
+            }
+        },
+        "innerHidden":16
+    },
+    "attacker":{
+        "name": "base",
+        "metrics": ["accuracy"],
+        "train":{
+            "name": "base",
+            "lr": 1e-5,
+            "weight_decay": 0,
+            "epochs": 5,
+            "batch_size": 16,
+            "warm_up_epochs": 0,
+            "ckpt": "best",
+            "save_path": "./models",
+            "visMetrics":false
+        },
+        "poisoner":{
+            "name": "addsent",
+            "poison_rate": 0.1,
+            "target_label": 1,
+            "label_consistency": false,
+            "label_dirty": false,
+            "load": true,
+            "triggers": "I watch this 3D movie"
+        }
+    },
+
+    "defender":{
+        "name": "onion",
+        "threshold": 0,
+        "batch_size": 16
+    },
+
+    "clean-tune": false
+
+}

@@ -1,0 +1,75 @@
+{
+    "target_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "poison_dataset":{
+        "name": "sst-2",
+        "dev_rate": 0.1
+    },
+    "victim":{
+        "type": "llm",
+        "model": "llama",
+        "path": "llama-2-7b-hf",
+        "num_classes": 2,
+        "device": "gpu",
+        "max_len": 4096,
+        "muscleConfig":{
+            "muscle":true,
+            "lora":true,
+            "loraConfig": {
+                "lora_alpha": 8,
+                "lora_dropout": 0.0,
+                "r": 2
+            },
+            "mslr":false,
+            "mslrConfig":{
+                "shortcut":false,
+                "freqBand": [1, 2, 3, 4],
+                "inner_rank": 1,
+                "mslrAlpha": 4,
+                "mslrDropout": 0.0
+            }
+        },
+        "innerHidden":16
+    },
+    "attacker":{
+        "name": "base",
+        "metrics": ["accuracy", "loss"],
+        "train":{
+            "name": "base",
+            "lr": 1e-5,
+            "weight_decay": 0,
+            "max_grad_norm":1.0,
+            "epochs": 5,
+            "batch_size": 16,
+            "warm_up_epochs": 0,
+            "ckpt": "best",
+            "save_path": "./models",
+            "visualize":false,
+            "attackMethod":"hiddenkiller",
+            "defense":true,
+            "frequencyConfig":{
+                "frequencyVis":true,
+                "kernelBand":[2, 8],
+                "kernelNum":25,
+                "poisonerName":"hiddenkiller_lora",
+                "computeFrequencyStep":5,
+                "freqVisEpoch":5
+            }
+        },
+        "poisoner":{
+            "name": "synbkd",
+            "poison_rate": 0.1,
+            "target_label": 1,
+            "label_consistency": false,
+            "label_dirty": false,
+            "save":false,
+            "load": true  ,
+            "template_id": -1
+        }
+    },
+    "clean-tune": false
+
+
+}

@@ -1,0 +1,22 @@
+torch
+transformers
+scikit-learn
+datasets
+jsonlines
+OpenAttack
+umap-learn
+wget
+sentence_transformers
+strsimpy
+hdbscan
+language-tool-python
+matplotlib
+OpenHowNet
+pyinflect
+peft
+nltk
+bigmodelvis
+gpustat
+seaborns
+# deepspeed if want to train llama2 without defense
+opendelta # if errors occurs, install opendelta from github
