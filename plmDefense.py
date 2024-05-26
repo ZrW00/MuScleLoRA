@@ -114,7 +114,7 @@ if __name__=='__main__':
         if "muscleConfig" in config["victim"].keys():
             if config["victim"]["muscleConfig"].get("mslr"):
                 freqBands = {
-                    'bert':[1, 4, 8, 12, 16, 20, 24, 28, 32],
+                    'bert':[1, 4, 8, 12, 16, 20, 24, 28],
                     'roberta':[1, 2, 4, 6, 8, 10, 12, 14, 16],
                     'bert-large':[1, 2, 3, 4, 5, 6, 7, 8, 9],
                     'roberta-large':[1, 2, 3, 4, 5, 6, 7, 8, 9],
