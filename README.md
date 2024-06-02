@@ -1,10 +1,14 @@
 # MuscleLoRA
 
-**This repository is the code implementation of our paper:**
+<div align="center">
+  <h2 align="center">Acquiring Clean Language Models from Backdoor Poisoned Datasets</h2>
+  <a href="https://arxiv.org/abs/2402.12026" style="display: inline-block; text-align: center;">
+      <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2402.12026-b31b1b.svg?style=flat">
+  </a>
+</div>
 
-```
-Acquiring Clean Language Models from Backdoor Poisoned Datasets
-```
+**This repository is the code implementation of our [paper](https://arxiv.org/abs/2402.12026):**
+
 
 ## Dependencies
 
@@ -24,7 +28,9 @@ Notably, if the installation of ``opendelta`` fails with pip, install ``opendelt
 
 ### Reproduce the results of LLM
 
-Run
+To reproduce the results of LLM, configure  `--config_path` and run `python llmDefense.py`.
+
+Or simply run
 
 ```bash
 bash llm.sh \
@@ -39,9 +45,11 @@ bash llm.sh \
 
 to reproduce the defense results of Llama2-7B and GPT2-XL, where vanilla denotes no defense deployment, ga denotes gradient alignment, mslr denotes multiple radial scalings, lora denotes low-rank adaptation ([LoRA](https://openreview.net/forum?id=nZeVKeeFYf9)), prefix denotes [Prefix-Tuning](https://doi.org/10.18653/v1/2021.acl-long.353). Additionally, the parameter ``start`` and ``end`` control the number of attack methods, where 0 denotes [Badnets](https://doi.org/10.18653/v1/2020.acl-main.249), 1 denotes [Addsent](https://doi.org/10.1109/ACCESS.2019.2941376), 2 denotes [StyleBkd](https://doi.org/10.18653/v1/2021.emnlp-main.374), and 3 denotes [HiddenKiller](https://doi.org/10.18653/v1/2021.acl-long.37).
 
-### Reproduce the results of BERT and RoBERTa
+### Reproduce the results of PLM
 
-Run
+To reproduce the results of PLM, configure  `--config_path` and run `python plmDefense.py`.
+
+Or simply run
 
 ```bash
 bash plm.sh \
@@ -60,7 +68,9 @@ to reproduce the defense results of BERT and RoBERTa, where vanilla denotes no d
 
 ### Reproduce the defense results of end-to-end baselines
 
-Run
+To reproduce the results of end-to-end baselines, configure  `--config_path` and run `python e2ebaselineDefense.py`.
+
+Or simply run
 
 ```bash
 bash e2ebaseline.sh \
@@ -77,7 +87,7 @@ Notably, for post-training baselines, i.e., ONION and STRIP, we prepare the LLM-
 
 ### Reproduce the results of Fourier analyses
 
-Run
+To reproduce the results of Fourier analyses, configure  `--config_path` and run `python fourierAnalysis.py`.
 
 ```bash
 bash fourierAnalysis.sh \
@@ -91,3 +101,21 @@ bash fourierAnalysis.sh \
 ```
 
 to reproduce the results of Fourier analyses, where vanilla denotes no defense deployment, ga denotes gradient alignment, mslr denotes multiple radial scalings, lora denotes low-rank adaptation ([LoRA](https://openreview.net/forum?id=nZeVKeeFYf9)). Additionally, the parameter ``start`` and ``end`` control the number of attack methods, where 0 denotes [Badnets](https://doi.org/10.18653/v1/2020.acl-main.249), 1 denotes [Addsent](https://doi.org/10.1109/ACCESS.2019.2941376), 2 denotes [StyleBkd](https://doi.org/10.18653/v1/2021.emnlp-main.374), and 3 denotes [HiddenKiller](https://doi.org/10.18653/v1/2021.acl-long.37).
+
+
+# Acknowledgement
+This work can not be done without the help of the following repos:
+
+- OpenBackdoor: [https://github.com/thunlp/OpenBackdoor](https://github.com/thunlp/OpenBackdoor)
+- OpenDelta: [https://github.com/thunlp/OpenDelta](https://github.com/thunlp/OpenDelta)
+
+# Citation
+
+```ruby
+@article{wu2024acquiring,
+  title   = {Acquiring Clean Language Models from Backdoor Poisoned Datasets by Downscaling Frequency Space},
+  author  = {Wu, Zongru and Zhang, Zhuosheng and Cheng, Pengzhou and Liu, Gongshen},
+  journal = {arXiv preprint arXiv:2402.12026},
+  year    = {2024}
+}
+```
