@@ -91,6 +91,8 @@ Notably, for post-training baselines, i.e., ONION and STRIP, we prepare the LLM-
 
 To reproduce the results of Fourier analyses, configure  `--config_path` and run `python fourierAnalysis.py`.
 
+Or simply run
+
 ```bash
 bash fourierAnalysis.sh \
     [dataset:sst-2/hsol/lingspam/agnews/miniagnews] \
