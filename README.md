@@ -112,6 +112,7 @@ This work can not be done without the help of the following repos:
 
 - OpenBackdoor: [https://github.com/thunlp/OpenBackdoor](https://github.com/thunlp/OpenBackdoor)
 - OpenDelta: [https://github.com/thunlp/OpenDelta](https://github.com/thunlp/OpenDelta)
+- PEFT: [https://github.com/huggingface/peft](https://github.com/huggingface/peft)
 
 # Citation
 
