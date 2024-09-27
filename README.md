@@ -117,10 +117,13 @@ This work can not be done without the help of the following repos:
 # Citation
 
 ```ruby
-@article{wu2024acquiring,
+@inproceedings{wu2024acquiring,
   title   = {Acquiring Clean Language Models from Backdoor Poisoned Datasets by Downscaling Frequency Space},
   author  = {Wu, Zongru and Zhang, Zhuosheng and Cheng, Pengzhou and Liu, Gongshen},
-  journal = {arXiv preprint arXiv:2402.12026},
-  year    = {2024}
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year    = {2024},
+  address = {Bangkok, Thailand},
+  pages = {8116--8134},
+  doi = {10.18653/v1/2024.acl-long.441}      
 }
 ```
