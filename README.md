@@ -12,6 +12,12 @@
 Acquiring Clean Language Models from Backdoor Poisoned Datasets
 ```
 
+<div align="center">
+  <a style="display: inline-block; text-align: center;">
+      <img src="./MuScleLoRA.png">
+  </a>
+</div>
+
 ## Dependencies
 
 * Install requirements.
